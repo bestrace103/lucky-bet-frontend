@@ -110,18 +110,19 @@ export default function PopularNow() {
         </Stack>
 
         {matches && (
-          <Grid2 container spacing={1} height={cardHeight()} overflow="hidden">
+          <Grid2 container spacing={2} height={cardHeight()} overflow="hidden" pb={2}>
             {games.map((item, index) => (
-              <Grid2 key={index} md={6} xs={6} position="relative">
+              <Grid2 key={index} md={6} xs={6} position="relative" height="calc(100% / 6)" display="flex" justifyContent="center">
                 <Box
                   component="img"
                   src={item.url}
                   borderRadius={4}
+                  height={1}
                   sx={{ border: '3px solid rgba(255,255,255,0.3)', backgroundSize: 'cover', aspectRatio: 1 }}
                   alt=""
                 />
 
-                <Stack direction="row" justifyContent="center" alignItems="center" gap={1} position="absolute" width={1} mt={-5}>
+                <Stack direction="row" justifyContent="center" alignItems="center" gap={1} position="absolute" width={1} bottom={20}>
                   <Box
                     component="img"
                     src={UsersIcon}
@@ -164,7 +165,7 @@ export default function PopularNow() {
         )}
       </Stack>
 
-      <Box
+      {/* <Box
         sx={{
           ...bgGradient({
             direction: '180deg',
@@ -178,7 +179,7 @@ export default function PopularNow() {
           opacity: 0.6,
           position: 'absolute',
         }}
-      />
+      /> */}
     </Card>
   );
 }

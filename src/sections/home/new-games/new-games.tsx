@@ -10,6 +10,8 @@ import { useTheme } from '@mui/material';
 import queen from 'src/assets/images/games/queen.png';
 // theme
 import { bgGradient } from 'src/theme/css';
+import Carousel, { CarouselArrows, CarouselDots, useCarousel } from 'src/components/carousel';
+import UsersIcon from 'src/assets/images/people.png';
 
 export default function NewGames() {
   const games = [
@@ -51,6 +53,14 @@ export default function NewGames() {
     },
   ];
 
+  const carousel = useCarousel({
+    autoplay: false,
+    ...CarouselDots({
+      rounded: true,
+      sx: { mt: 3 },
+    }),
+  });
+
   const theme = useTheme();
   return (
     <Card
@@ -72,7 +82,69 @@ export default function NewGames() {
           <Typography variant="subtitle1">Enjoy The Well Curated Selection</Typography>
         </Stack>
 
-        <Grid container spacing={1}>
+        <Box
+          sx={{
+            '& ul': {
+              gap: 1,
+              justifyContent: 'flex-start',
+              ml: {
+                xs: theme.spacing(1),
+                md: theme.spacing(1),
+              },
+              '& li': {
+                color: 'white',
+                width: 16,
+                height: 4,
+                '& span': {
+                  width: 1,
+                  borderRadius: 2
+                }
+              },
+              '& li.slick-active': {
+                width: 32,
+                height: 4,
+                color: '#2183F6',
+                '& span': {
+                  width: 1,
+                  borderRadius: 2
+                }
+              }
+            }
+          }}
+        >
+          <CarouselArrows filled shape="rounded">
+            <Carousel ref={carousel.carouselRef} {...carousel.carouselSettings}>
+              {[1, 2, 3].map((sliderIndex) =>
+                <Box key={sliderIndex}>
+                  <Grid container spacing={1}>
+                    {games.map((item, index) => (
+                      <Grid key={index} md={2} position="relative">
+                        <Box
+                          component="img"
+                          src={item.url}
+                          borderRadius={4}
+                          sx={{ border: '3px solid rgba(255,255,255,0.3)', backgroundSize: 'cover', aspectRatio: 1 }}
+                          alt=""
+                        />
+
+                        <Stack direction="row" justifyContent="center" alignItems="center" gap={1} position="absolute" width={1} mt={-4}>
+                          <Box
+                            component="img"
+                            src={UsersIcon}
+                            width={24}
+                            height={24}
+                          />
+                          <Typography fontWeight={100} fontSize={14}>212.3K</Typography>
+                        </Stack>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Box>
+              )}
+            </Carousel>
+          </CarouselArrows>
+        </Box>
+        {/* <Grid container spacing={1}>
           {games.map((item, index) => (
             <Grid key={index} md={2}>
               <Box
@@ -85,7 +157,7 @@ export default function NewGames() {
               />
             </Grid>
           ))}
-        </Grid>
+        </Grid> */}
 
         <Stack flexDirection="row" justifyContent="flex-end">
           <Button
@@ -96,6 +168,7 @@ export default function NewGames() {
               px: 3,
               bgcolor: theme.palette.primary.main,
               color: 'white',
+              mt: -5
             }}
           >
             See all

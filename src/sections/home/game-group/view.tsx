@@ -33,10 +33,10 @@ export default function GameView() {
           </Grid>
           <TopPlayers />
           <Grid container spacing={matches === true ? 4 : 2}>
-            <Grid md={8} xs={12}>
+            <Grid md={6} xs={12}>
               <Tournaments />
             </Grid>
-            <Grid md={4} xs={12}>
+            <Grid md={6} xs={12}>
               <Trending />
             </Grid>
           </Grid>

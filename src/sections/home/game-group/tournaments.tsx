@@ -128,9 +128,14 @@ export default function Tournaments() {
         sx={{
           ...bgGradient({
             direction: '180deg',
-            startColor: '#1e2b3a',
-            endColor: '#04092d',
+            startColor: '#131d2e',
+            endColor: '#000000',
           }),
+          // ...bgGradient({
+          //   direction: '180deg',
+          //   startColor: '#1e2b3a',
+          //   endColor: '#04092d',
+          // }),
           width: 1,
           height: 50,
           bottom: 0,

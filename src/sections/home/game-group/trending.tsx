@@ -11,9 +11,19 @@ import green_dia from 'src/assets/images/game-icons/green-dia.png';
 import soccer from 'src/assets/images/games/soccer.png';
 // theme
 import { bgGradient } from 'src/theme/css';
+import UsersIcon from 'src/assets/images/people.png';
 
 export default function Trending() {
   const games = [
+    {
+      url: soccer,
+    },
+    {
+      url: soccer,
+    },
+    {
+      url: soccer,
+    },
     {
       url: soccer,
     },
@@ -80,7 +90,7 @@ export default function Trending() {
 
         <Grid container spacing={1} height={cardHeight()} overflow="hidden">
           {games.map((item, index) => (
-            <Grid key={index} md={6} xs={6}>
+            <Grid key={index} md={4} xs={6} position="relative">
               <Box
                 component="img"
                 src={item.url}
@@ -89,12 +99,22 @@ export default function Trending() {
                 sx={{ border: '3px solid rgba(255,255,255,0.3)', backgroundSize: 'cover', aspectRatio: 1 }}
                 alt=""
               />
+
+              <Stack direction="row" justifyContent="center" alignItems="center" gap={1} position="absolute" width={1} mt={-4}>
+                <Box
+                  component="img"
+                  src={UsersIcon}
+                  width={24}
+                  height={24}
+                />
+                <Typography fontWeight={100} fontSize={14}>212.3K</Typography>
+              </Stack>
             </Grid>
           ))}
         </Grid>
       </Stack>
 
-      <Box
+      {/* <Box
         sx={{
           ...bgGradient({
             direction: '180deg',
@@ -108,7 +128,7 @@ export default function Trending() {
           opacity: 0.6,
           position: 'absolute',
         }}
-      />
+      /> */}
     </Card>
   );
 }

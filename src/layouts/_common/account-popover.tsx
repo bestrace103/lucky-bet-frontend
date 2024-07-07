@@ -1,6 +1,6 @@
 import { m } from 'framer-motion';
 // @mui
-import { alpha, useTheme } from '@mui/material/styles';
+import { alpha, useTheme, styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
@@ -41,6 +41,64 @@ const OPTIONS = [
 ];
 
 // ----------------------------------------------------------------------
+
+const AnimatedButton = styled(Button)(({ theme }) => ({
+  '--border-radius': '15px',
+  '--border-width': '4px',
+  appearance: 'none',
+  position: 'relative',
+  padding: '1em 2em',
+  border: 0,
+  backgroundColor: '#212121',
+  fontFamily: '"Roboto", Arial, "Segoe UI", sans-serif',
+  fontSize: '18px',
+  fontWeight: 500,
+  color: '#fff',
+  zIndex: 2,
+  overflow: 'hidden',
+  animationPlayState: 'running',
+  '&::after': {
+    '--m-i': 'linear-gradient(#000, #000)',
+    '--m-o': 'content-box, padding-box',
+    content: '""',
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    width: '100%',
+    height: '100%',
+    padding: 'var(--border-width)',
+    borderRadius: 'var(--border-radius)',
+    backgroundImage: `conic-gradient(
+      white,
+      #29dbbc,
+      #ddf505,
+      #ff9f0e,
+      #e440bb,
+      #655adc,
+      white
+    )`,
+    WebkitMaskImage: 'var(--m-i), var(--m-i)',
+    maskImage: 'var(--m-i), var(--m-i)',
+    WebkitMaskOrigin: 'var(--m-o)',
+    maskOrigin: 'var(--m-o)',
+    WebkitMaskClip: 'var(--m-o)',
+    maskClip: 'var(--m-o)',
+    WebkitMaskComposite: 'destination-out',
+    maskComposite: 'exclude',
+    filter: 'hue-rotate(0)',
+    animation: 'rotate-hue linear 500ms infinite',
+    // animationPlayState: 'paused',
+    boxSizing: 'border-box',
+  },
+  '&:active': {
+    '--border-width': '5px',
+  },
+  '@keyframes rotate-hue': {
+    to: {
+      filter: 'hue-rotate(1turn)',
+    },
+  },
+}));
 
 export default function AccountPopover() {
   const router = useRouter();
@@ -109,6 +167,7 @@ export default function AccountPopover() {
       {user === null && (
         <Stack direction="row" spacing={1}>
           <Button
+            className='header-animation_btn'
             variant="contained"
             size="large"
             onClick={() => {
@@ -120,12 +179,12 @@ export default function AccountPopover() {
               color: 'white',
               bgcolor: theme.palette.primary.main,
               px: matches === true ? 3 : 1,
-              borderTop: '3px solid #FFF',
-              borderLeft: '3px solid #FFF',
-              borderRight: '3px solid #FFF',
+              // borderTop: '3px solid #FFF',
+              // borderLeft: '3px solid #FFF',
+              // borderRight: '3px solid #FFF',
               borderRadius: 2,
-              boxShadow:
-                '0px 0px 0px 4px rgba(255, 255, 255, 0.07), 0px -3px 0px 0px rgba(0, 0, 0, 0.20) inset',
+              // boxShadow:
+              //   '0px 0px 0px 4px rgba(255, 255, 255, 0.07), 0px -3px 0px 0px rgba(0, 0, 0, 0.20) inset',
               ':hover': {
                 bgcolor: 'primary.dark',
               },
