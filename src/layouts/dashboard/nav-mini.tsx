@@ -35,6 +35,8 @@ export default function NavMini() {
         ml: 4,
         flexShrink: { lg: 0 },
         width: { lg: NAV.W_MINI },
+        display: 'flex',
+        flexDirection: 'column'
       }}
     >
       {/* <NavToggleButton

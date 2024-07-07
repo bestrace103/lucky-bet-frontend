@@ -94,17 +94,16 @@ export default function NavItem({
         bgcolor:
           (depth === 1 &&
             !open && {
-              ...bgGradient({
-                direction: '0deg',
-                startColor: `${theme.palette.secondary.light}80`,
-                endColor: `${theme.palette.secondary.dark}80`,
-              }),
-            }) ||
+            ...bgGradient({
+              direction: '0deg',
+              startColor: `${theme.palette.secondary.light}80`,
+              endColor: `${theme.palette.secondary.dark}80`,
+            }),
+          }) ||
           (depth === 1 && open && theme.palette.primary.light) ||
           theme.palette.secondary.darker,
         borderRadius: 2,
         color: 'white',
-        py: 1,
         my: depth === 1 ? 1 : 0.5,
       }}
       {...other}
@@ -209,6 +208,10 @@ export default function NavItem({
         ...(disabled && {
           cursor: 'default',
         }),
+        '& .MuiListItemButton-root': {
+          py: 0,
+          px: 1
+        }
       }}
     >
       {renderContent}

@@ -1,3 +1,7 @@
+* {
+    font-family: Neue Plak !important;
+}
+
 ::-webkit-scrollbar {
     width: 5px;
     height: 5px;

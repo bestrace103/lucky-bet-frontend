@@ -59,7 +59,10 @@ export default function AppWelcome({ title, description, action, img, ...other }
             xs: theme.spacing(4),
             md: theme.spacing(6),
           },
-          mt: -6,
+          mt: {
+            xs: -4,
+            md: -6,
+          },
           '& li': {
             color: 'white',
             width: 16,

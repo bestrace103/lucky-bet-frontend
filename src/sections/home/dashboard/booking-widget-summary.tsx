@@ -46,6 +46,7 @@ export default function BookingWidgetSummary({
         src={gradientColor}
         alt=""
         width={1}
+        height={1}
         ml={-3}
         position="absolute"
       />

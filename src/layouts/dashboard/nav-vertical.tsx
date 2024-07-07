@@ -57,9 +57,9 @@ export default function NavVertical({ openNav, onCloseNav }: Props) {
           startColor: `${theme.palette.secondary.light}66`,
           endColor: `${theme.palette.secondary.dark}66`,
         }),
-        maxHeight: "90%",
+        maxHeight: { xs: "100%", md: "90%" },
         height: 1,
-        ml: 4,
+        ml: { xs: 0, md: 4 },
         mt: 0,
         borderRadius: 3,
       }}
@@ -118,8 +118,11 @@ export default function NavVertical({ openNav, onCloseNav }: Props) {
       <Scrollbar
         sx={{
           height: 1,
+          display: 'flex',
+          flexDirection: 'column',
           '& .simplebar-content': {
             // height: 'calc(100vh - 83px)',
+            height: 1,
             display: 'flex',
             flexDirection: 'column',
             overflowY: 'auto',
@@ -132,6 +135,8 @@ export default function NavVertical({ openNav, onCloseNav }: Props) {
             currentRole: user?.role || 'admin',
           }}
         />
+
+        <Box sx={{ flexGrow: 1 }} />
 
         <Promotions />
       </Scrollbar>
