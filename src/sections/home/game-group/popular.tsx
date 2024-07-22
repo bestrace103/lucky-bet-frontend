@@ -159,6 +159,16 @@ export default function PopularNow() {
                   sx={{ border: '3px solid rgba(255,255,255,0.3)', backgroundSize: 'cover' }}
                   alt=""
                 />
+
+                <Stack direction="row" justifyContent="center" alignItems="center" gap={1} position="absolute" width={1} bottom={15}>
+                  <Box
+                    component="img"
+                    src={UsersIcon}
+                    width={24}
+                    height={24}
+                  />
+                  <Typography fontWeight={100} fontSize={14}>212.3K</Typography>
+                </Stack>
               </SwiperSlide>
             ))}
           </Swiper>
